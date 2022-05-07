@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -54,7 +55,10 @@ class CountryServiceTest {
         Country countryWithMostOfficialLanguagesHavingGerman = countryService.findCountryWithMostOfficialLanguagesHavingGerman();
 
         Country expected = new Country("BE", new String[]{"nl", "fr", "de"});
+
+        assertNotNull(countryWithMostOfficialLanguagesHavingGerman);
         assertEquals(expected, countryWithMostOfficialLanguagesHavingGerman);
+
     }
 
     @Test
@@ -69,6 +73,7 @@ class CountryServiceTest {
                         new CountryLanguages("DE", 1),
                         new CountryLanguages("ES", 1)
                 ));
+        assertNotNull(countriesLanguageCount);
         assertEquals(expectedCountryLanguagesSet, countriesLanguageCount);
     }
 
@@ -76,6 +81,7 @@ class CountryServiceTest {
     public void testCountAllOfficialLanguages() {
         Long officialLanguagesCount = countryService.countAllOfficialLanguages();
 
+        assertNotNull(officialLanguagesCount);
         assertEquals(6, officialLanguagesCount);
     }
 

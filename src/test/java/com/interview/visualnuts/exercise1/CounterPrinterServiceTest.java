@@ -1,8 +1,6 @@
 package com.interview.visualnuts.exercise1;
 
-import com.interview.visualnuts.exercise1.CounterPrinterService;
-import com.interview.visualnuts.exercise1.NumberMapper;
-import org.apache.commons.io.IOUtils;
+import com.interview.visualnuts.FileReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,12 +9,11 @@ import org.mockito.Mockito;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.charset.Charset;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 
-class CounterPrinterServiceTest {
+class CounterPrinterServiceTest extends FileReader {
 
     private final CounterPrinterService counterPrinterService;
 
@@ -28,7 +25,7 @@ class CounterPrinterServiceTest {
     CounterPrinterServiceTest() throws IOException {
         this.numberMapper = Mockito.mock(NumberMapper.class);
         this.counterPrinterService = new CounterPrinterService(numberMapper);
-        this.expectedPrintedContent = IOUtils.toString(getClass().getResourceAsStream("/exercise1/output_mock.txt"), Charset.defaultCharset());
+        this.expectedPrintedContent = readFileToString("/exercise1/output_mock.txt");
     }
 
     @BeforeEach
