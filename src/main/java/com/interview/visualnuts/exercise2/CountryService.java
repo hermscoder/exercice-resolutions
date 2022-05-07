@@ -21,7 +21,7 @@ public class CountryService {
         this.countryMapper = countryMapper;
         this.jsonReader = jsonReader;
 
-        JSONArray countriesJsonArray = this.jsonReader.readJsonFileToJsonArray("/exercise2/my_dataset.json");
+        JSONArray countriesJsonArray = this.jsonReader.readJsonFileToJsonArray("/exercise2/dataset.json");
         this.countriesDataSet = this.countryMapper.toModel(countriesJsonArray);
     }
 
